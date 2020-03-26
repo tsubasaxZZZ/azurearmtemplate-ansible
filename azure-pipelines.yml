@@ -26,6 +26,6 @@ steps:
     resourceGroupName: 'demo-cicd'
     location: 'Japan East'
     templateLocation: 'Linked artifact'
-    csmFile: 'templates/templates.json'
-    csmParametersFile: 'parameters/parameters.json'
+    csmFile: '../templates/templates.json'
+    csmParametersFile: '../parameters/parameters.json'
     deploymentMode: 'Incremental'
