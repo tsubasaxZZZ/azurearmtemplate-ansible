@@ -3,25 +3,22 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "virtualMachines_VM1_name": {
-            "value": null
+            "value": "VM1"
         },
         "networkInterfaces_vm1218_name": {
-            "value": null
+            "value": "VM1-nic"
         },
         "publicIPAddresses_VM1_ip_name": {
-            "value": null
+            "value": "VM1-pip"
         },
         "storageAccounts_democicddiag_name": {
-            "value": null
+            "value": "tsunomurdemocicd"
         },
         "networkSecurityGroups_VM1_nsg_name": {
-            "value": null
+            "value": "VM1-nsg"
         },
         "virtualNetworks_demo_cicd_vnet_name": {
-            "value": null
-        },
-        "schedules_shutdown_computevm_vm1_name": {
-            "value": null
+            "value": "democicd-vnet"
         }
     }
 }
