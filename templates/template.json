@@ -282,7 +282,7 @@
                     "secrets": [
                     ],
                     "allowExtensionOperations": true,
-                    "customData": "[base64(parameters('customData'))]"
+                    "customData": "[parameters('customData')]"
                 },
                 "networkProfile": {
                     "networkInterfaces": [
