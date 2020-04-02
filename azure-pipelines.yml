@@ -27,9 +27,8 @@ stages:
         env
         find . -ls
     - bash: |
-       echo $(IDRSA)
-       echo $(idrsa)
-       c=$(cat ansible/cloud-init.txt | sed -e "s/##id_rsa##/$(IDRSA)/g")
+       idrsa=$(echo $(idrsa) | base64 -w 0)
+       c=$(cat ansible/cloud-init.txt | sed -e "s/##id_rsa##/$(idrsa)/g")
        c=$(echo $c | base64 -w 0) 
        echo '##vso[task.setvariable variable=cloudInit;isOutput=true]'$c
        echo '##vso[task.setvariable variable=datetime;isOutput=true]'$(date +%s)
