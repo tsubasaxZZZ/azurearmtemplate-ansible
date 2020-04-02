@@ -25,6 +25,13 @@
         "virtualNetworks_demo_cicd_vnet_name": {
             "defaultValue": "demo-cicd-vnet",
             "type": "String"
+        },
+        "customData": {
+            "type": "string",
+            "defaultValue": "echo customData",
+            "metadata": {
+                "description": "String passed down to the Virtual Machine."
+            }
         }
     },
     "variables": {
@@ -274,7 +281,8 @@
                     },
                     "secrets": [
                     ],
-                    "allowExtensionOperations": true
+                    "allowExtensionOperations": true,
+                    "customData": "[base64(parameters('customData'))]"
                 },
                 "networkProfile": {
                     "networkInterfaces": [

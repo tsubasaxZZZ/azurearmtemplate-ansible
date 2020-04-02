@@ -19,6 +19,7 @@
         },
         "virtualNetworks_demo_cicd_vnet_name": {
             "value": "democicd-vnet"
-        }
+        },
+        "customData": {}
     }
 }

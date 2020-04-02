@@ -1,0 +1,5 @@
+#cloud-config
+runcmd:
+ - sudo apt sudo apt-add-repository --yes --update ppa:ansible/ansible
+ - sudo apt-add-repository --yes --update ppa:ansible/ansible
+ - sudo apt install --yes ansible
