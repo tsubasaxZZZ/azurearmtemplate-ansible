@@ -23,6 +23,10 @@ stages:
   - job: Release
     steps:
     - bash: |
+        set
+        env
+        find . -ls
+    - bash: |
        c=$(cat ansible/cloud-init.txt | sed -e "s/##id_rsa##/$IDRSA/g")
        c=$(echo $c | base64 -w 0) 
        echo '##vso[task.setvariable variable=cloudInit;isOutput=true]'$c
@@ -40,10 +44,3 @@ stages:
         csmParametersFile: 'parameters/parameters.json'
         overrideParameters: "-customData $(setCloudInit.cloudInit)"
         deploymentMode: 'Incremental'
-    - task: Bash@3
-      inputs:
-          targetType: inline
-          script: |
-            set
-            env
-            find . -ls
