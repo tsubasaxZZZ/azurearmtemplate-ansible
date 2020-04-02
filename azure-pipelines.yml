@@ -9,8 +9,6 @@ variables:
 
 stages:
 - stage: Release
-  dependsOn:
-  - Build
   jobs:
   - job: Release
     steps:
