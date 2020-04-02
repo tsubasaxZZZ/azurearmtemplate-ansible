@@ -8,14 +8,6 @@ variables:
   - group: variablegroup0402
 
 stages:
-- stage: Build
-  jobs:
-  - job: Build
-    steps:
-    - script: echo 'Build'
-    - publish: .
-      artifact: templates
-
 - stage: Release
   dependsOn:
   - Build
@@ -29,10 +21,9 @@ stages:
     - bash: |
        secret=$(echo $(idrsa) | base64 -w 0)
        echo $secret
-       c=$(cat ansible/cloud-init.txt | sed -e "s/##id_rsa##/$secret/g")
-       c=$(echo $c | base64 -w 0) 
-       c=$(cat ansible/cloud-init.txt)
-       echo $c
+       #c=$(cat ansible/cloud-init.txt | sed -e "s/##id_rsa##/$secret/g")
+       #c=$(echo $c | base64 -w 0) 
+       c=$(cat ansible/cloud-init.txt | base64 -w 0)
        echo '##vso[task.setvariable variable=cloudInit;isOutput=true]'$c
        echo '##vso[task.setvariable variable=datetime;isOutput=true]'$(date +%s)
       name: setCloudInit
