@@ -3,5 +3,5 @@ runcmd:
  - sudo apt sudo apt-add-repository --yes --update ppa:ansible/ansible
  - sudo apt-add-repository --yes --update ppa:ansible/ansible
  - sudo apt install --yes ansible
- - 'echo "##id_rsa##" | base64 --decode > /root/.ssh/id_rsa'
- - chmod 600 /root/.ssh/id_rsa
+ - 'echo "##id_rsa##" | base64 --decode > /home/tsunomur/.ssh/id_rsa'
+ - chmod 600 /home/tsunomur/.ssh/id_rsa
