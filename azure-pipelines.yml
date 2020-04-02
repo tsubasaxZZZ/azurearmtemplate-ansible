@@ -28,7 +28,8 @@ stages:
         find . -ls
     - bash: |
        secret=$(echo $(idrsa) | base64 -w 0)
-       c=$(cat ansible/cloud-init.txt | sed -e "s/##id_rsa##/$(secret)/g")
+       echo $secret
+       c=$(cat ansible/cloud-init.txt | sed -e "s/##id_rsa##/$secret/g")
        c=$(echo $c | base64 -w 0) 
        echo '##vso[task.setvariable variable=cloudInit;isOutput=true]'$c
        echo '##vso[task.setvariable variable=datetime;isOutput=true]'$(date +%s)
