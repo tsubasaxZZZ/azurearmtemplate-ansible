@@ -35,6 +35,7 @@
         }
     },
     "variables": {
+        "storageName": "[toLower( concat( parameters('storageAccounts_democicddiag_name'), uniqueString(resourceGroup().id) ) )]"
     },
     "resources": [
         {
@@ -117,7 +118,7 @@
         {
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2019-06-01",
-            "name": "[parameters('storageAccounts_democicddiag_name')]",
+            "name": "[variables('storageName')]",
             "location": "southeastasia",
             "sku": {
                 "name": "Standard_LRS",
@@ -195,9 +196,9 @@
         {
             "type": "Microsoft.Storage/storageAccounts/blobServices",
             "apiVersion": "2019-06-01",
-            "name": "[concat(parameters('storageAccounts_democicddiag_name'), '/default')]",
+            "name": "[concat(variables('storageName'), '/default')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_democicddiag_name'))]"
+                "[resourceId('Microsoft.Storage/storageAccounts', variables('storageName'))]"
             ],
             "sku": {
                 "name": "Standard_LRS",
@@ -216,9 +217,9 @@
         {
             "type": "Microsoft.Storage/storageAccounts/fileServices",
             "apiVersion": "2019-06-01",
-            "name": "[concat(parameters('storageAccounts_democicddiag_name'), '/default')]",
+            "name": "[concat(variables('storageName'), '/default')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_democicddiag_name'))]"
+                "[resourceId('Microsoft.Storage/storageAccounts', variables('storageName'))]"
             ],
             "sku": {
                 "name": "Standard_LRS",
@@ -238,7 +239,7 @@
             "location": "southeastasia",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm1218_name'))]",
-                "[resourceId('Microsoft.Storage/StorageAccounts', parameters('storageAccounts_democicddiag_name'))]"
+                "[resourceId('Microsoft.Storage/StorageAccounts', variables('storageName'))]"
             ],
             "properties": {
                 "hardwareProfile": {
@@ -294,7 +295,7 @@
                 "diagnosticsProfile": {
                     "bootDiagnostics": {
                         "enabled": true,
-                        "storageUri": "[concat('https://', parameters('storageAccounts_democicddiag_name'), '.blob.core.windows.net/')]"
+                        "storageUri": "[concat('https://', variables('storageName'), '.blob.core.windows.net/')]"
                     }
                 }
             }
@@ -302,10 +303,10 @@
         {
             "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
             "apiVersion": "2019-06-01",
-            "name": "[concat(parameters('storageAccounts_democicddiag_name'), '/default/bootdiagnostics-vm1-8e80f62e-1130-4a02-9019-6de1f831c52e')]",
+            "name": "[concat(variables('storageName'), '/default/bootdiagnostics-vm1-8e80f62e-1130-4a02-9019-6de1f831c52e')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_democicddiag_name'), 'default')]",
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_democicddiag_name'))]"
+                "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('storageName'), 'default')]",
+                "[resourceId('Microsoft.Storage/storageAccounts', variables('storageName'))]"
             ],
             "properties": {
                 "publicAccess": "None"
