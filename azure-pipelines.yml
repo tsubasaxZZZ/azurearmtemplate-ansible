@@ -34,7 +34,7 @@ stages:
         templateLocation: 'Linked artifact'
         csmFile: 'templates/template.json'
         csmParametersFile: 'parameters/parameters.json'
-        overrideParameters: "-customData '$(setCloudInit.cloudInit)'"
+        overrideParameters: "-customData $(setCloudInit.cloudInit)"
         deploymentMode: 'Incremental'
     - task: Bash@3
       inputs:
