@@ -8,3 +8,5 @@ runcmd:
  - chown tsunomur:tsunomur /home/tsunomur/.ssh/*
  - chmod 600 /home/tsunomur/.ssh/*
  - sudo -u tsunomur  git clone git@ssh.dev.azure.com:v3/tsunomur/demo-iac/demo-iac ~tsunomur/demo-iac
+ - cd ~tsunomur/demo-iac/ansible
+ - ansible-playbook -i hosts playbook.yaml
