@@ -22,6 +22,7 @@ stages:
     - bash: |
        c=$(cat ansible/cloud-init.txt) 
        echo '##vso[task.setvariable variable=cloudInit;isOutput=true]'$c
+       echo '##vso[task.setvariable variable=datetime;isOutput=true]'$(date +%s)
        echo $(cloudInit)
       name: setCloudInit
     - task: AzureResourceManagerTemplateDeployment@3
@@ -29,7 +30,7 @@ stages:
         deploymentScope: 'Resource Group'
         ConnectedServiceName: 'tsunomur_Microsoft Azure 社内従量課金プラン(33325c7f-089d-493b-9ad9-1400a8da5394)'
         action: 'Create Or Update Resource Group'
-        resourceGroupName: 'demo-cicd2'
+        resourceGroupName: 'demo-cicd-$(setCloudInit.datetime)'
         location: 'Japan East'
         templateLocation: 'Linked artifact'
         csmFile: 'templates/template.json'
