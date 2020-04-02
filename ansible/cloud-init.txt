@@ -4,6 +4,7 @@ runcmd:
  - sudo apt-add-repository --yes --update ppa:ansible/ansible
  - sudo apt install --yes ansible
  - 'echo "##id_rsa##" | base64 --decode > /home/tsunomur/.ssh/id_rsa'
+ - echo StrictHostKeyChecking no /home/tsunomur/.ssh/config
  - chown tsunomur:tsunomur /home/tsunomur/.ssh/*
  - chmod 600 /home/tsunomur/.ssh/*
- - sudo -u tsunomur git clone git@ssh.dev.azure.com:v3/tsunomur/demo-iac/demo-iac
+ - sudo -u tsunomur  git clone git@ssh.dev.azure.com:v3/tsunomur/demo-iac/demo-iac ~tsunomur/demo-iac

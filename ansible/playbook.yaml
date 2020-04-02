@@ -1,0 +1,11 @@
+- hosts: nginx
+  remote_user: tsunomur
+  tasks:
+    - name: install nginx
+      apt:
+        name: nginx
+      become: true
+    - name: nginx is running
+      systemd:
+        state: started
+        name: nginx
