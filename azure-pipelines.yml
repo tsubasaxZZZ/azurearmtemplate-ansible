@@ -14,8 +14,8 @@ stages:
       artifact: templates
 
 - stage: Release
-  dependsOn:
-  - Build
+#  dependsOn:
+#  - Build
   jobs:
   - job: Release
     steps:

@@ -12,7 +12,7 @@
             "value": "VM1-pip"
         },
         "storageAccounts_democicddiag_name": {
-            "value": "tsunomurdemocicd"
+            "value": "democicd"
         },
         "networkSecurityGroups_VM1_nsg_name": {
             "value": "VM1-nsg"

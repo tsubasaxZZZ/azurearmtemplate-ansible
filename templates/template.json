@@ -15,7 +15,7 @@
             "type": "String"
         },
         "storageAccounts_democicddiag_name": {
-            "defaultValue": "democicddiag",
+            "defaultValue": "democicd",
             "type": "String"
         },
         "networkSecurityGroups_VM1_nsg_name": {
@@ -28,7 +28,6 @@
         },
         "customData": {
             "type": "string",
-            "defaultValue": "echo customData",
             "metadata": {
                 "description": "String passed down to the Virtual Machine."
             }
