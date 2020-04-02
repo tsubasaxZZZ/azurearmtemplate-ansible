@@ -20,7 +20,7 @@ stages:
   - job: Release
     steps:
     - bash: |
-       c=$(cat ansible/cloud-init.txt | base64) 
+       c=$(cat ansible/cloud-init.txt | base64 -w 0) 
        echo '##vso[task.setvariable variable=cloudInit;isOutput=true]'$c
        echo '##vso[task.setvariable variable=datetime;isOutput=true]'$(date +%s)
       name: setCloudInit
