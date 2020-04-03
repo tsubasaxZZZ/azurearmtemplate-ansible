@@ -29,6 +29,7 @@ stages:
           - bash: |
               set
               env
+              cd $(Pipeline.Workspace)
               find . -ls
           - bash: |
               cd $(Pipeline.Workspace)/artifact
