@@ -8,7 +8,17 @@ variables:
   - group: variablegroup0402
 
 stages:
+- stage: Build
+  jobs:
+  - job: Build
+    steps:
+    - script: echo 'Build'
+    - publish: .
+      artifact: artifact
+
 - stage: Release
+  dependsOn:
+    - Build
   jobs:
   - deployment: Release
     environment: release
@@ -21,6 +31,7 @@ stages:
               env
               find . -ls
           - bash: |
+              cd $(Pipeline.Workspace)/artifact
               IFS=
               c=$(cat ansible/cloud-init.txt | sed -e "s/##id_rsa##/$(idrsa)/g")
               c=$(echo $c | base64 -w 0) 
@@ -35,7 +46,7 @@ stages:
               resourceGroupName: 'demo-cicd-$(setCloudInit.datetime)'
               location: 'Japan East'
               templateLocation: 'Linked artifact'
-              csmFile: 'templates/template.json'
-              csmParametersFile: 'parameters/parameters.json'
+              csmFile: '$(Pipeline.Workspace)/artifact/templates/template.json'
+              csmParametersFile: '$(Pipeline.Workspace)/artifact/parameters/parameters.json'
               overrideParameters: "-customData $(setCloudInit.cloudInit)"
               deploymentMode: 'Incremental'
