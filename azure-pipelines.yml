@@ -28,10 +28,10 @@ stages:
         deploymentScope: 'Resource Group'
         ConnectedServiceName: 'tsunomur_Microsoft Azure 社内従量課金プラン(33325c7f-089d-493b-9ad9-1400a8da5394)'
         action: 'Create Or Update Resource Group'
-        resourceGroupName: 'demo-cicd-$(datetime)'
+        resourceGroupName: 'demo-cicd-$(setCloudInit.datetime)'
         location: 'Japan East'
         templateLocation: 'Linked artifact'
         csmFile: 'templates/template.json'
         csmParametersFile: 'parameters/parameters.json'
-        overrideParameters: "-customData $(cloudInit)"
+        overrideParameters: "-customData $(setCloudInit.cloudInit)"
         deploymentMode: 'Incremental'
