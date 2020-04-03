@@ -11,6 +11,7 @@ stages:
 - stage: Release
   jobs:
   - deployment: Release
+    environment: release
     strategy:
       runOnce:
         deploy:
