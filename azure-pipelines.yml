@@ -26,7 +26,7 @@ stages:
               c=$(echo $c | base64 -w 0) 
               echo '##vso[task.setvariable variable=cloudInit;isOutput=true]'$c
               echo '##vso[task.setvariable variable=datetime;isOutput=true]'$(date +%s)
-              name: setCloudInit
+            name: setCloudInit
           - task: AzureResourceManagerTemplateDeployment@3
             inputs:
               deploymentScope: 'Resource Group'
