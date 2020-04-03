@@ -60,6 +60,8 @@ stages:
           sleep 3
 
 - stage: Development
+  dependsOn:
+    - Build
   jobs:
   - job: TestJob2
     strategy:
