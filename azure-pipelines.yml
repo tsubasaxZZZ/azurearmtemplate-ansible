@@ -16,7 +16,7 @@ stages:
     - publish: .
       artifact: artifact
 
-- stage: Release
+- stage: Production
   dependsOn:
     - Build
   jobs:
@@ -57,4 +57,14 @@ stages:
     steps:
       - bash: |
           date
-          sleep 30
+          sleep 3
+
+- stage: Development
+  jobs:
+  - job: TestJob2
+    strategy:
+      parallel: 2
+    steps:
+      - bash: |
+          date
+          sleep 5
