@@ -51,3 +51,10 @@ stages:
               csmParametersFile: '$(Pipeline.Workspace)/artifact/parameters/parameters.json'
               overrideParameters: "-customData $(setCloudInit.cloudInit)"
               deploymentMode: 'Incremental'
+  - job: TestJob1
+    strategy:
+      parallel: 4
+    steps:
+      - bash: |
+          date
+          sleep 30
